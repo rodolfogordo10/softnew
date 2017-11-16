@@ -1,0 +1,34 @@
+<div layout-padding >
+    <md-content flex="100" layout layout-align="center center" layout-padding layout-wrap layout-fill ng-cloak >
+        <md-whiteframe style="background-color: #FFFFFF" class="md-whiteframe-2dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center" >
+            <div flex="100" layout-gt-sm="column" layout-padding >
+                <div class="container-logo">
+                    <img src="img/logo.png" class="img-logo" style="width: 100%;"></img>
+                </div>
+                <form name="userForm" >
+                    <div flex="100" >
+                        <md-input-container class="md-block">
+                            <label>Login</label>
+                            <input ng-model="user.email" type="email" required name="email" >
+                            <div ng-messages="user.email.$error" >
+                                <div ng-message="required">Login inválido.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div flex="100">
+                        <md-input-container class="md-block">
+                            <label>Senha</label>
+                            <input ng-model="user.password" type="password" required name="password" >
+                            <div ng-messages="user.password.$error" >
+                                <div ng-message="required">Senha inválido.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div flex="100" layout="row" layout-align="center center">
+                        <md-button type="submit" flex class="md-raised md-primary md-block" ng-click="loginUser();" >Entrar</md-button>
+                    </div>
+                </form>
+            </div>
+        </md-whiteframe>
+    </md-content>
+</div>

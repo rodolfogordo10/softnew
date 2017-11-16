@@ -1,0 +1,60 @@
+<div layout="column" ng-cloak>
+  
+    <md-content flex layout-padding>
+        <div layout-gt-sm="row">
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>ID</label>
+                <input disabled name="aliasName" ng-model="company.aliasName" />
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+            </div>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Nome Fantasia</label>
+                <input disabled name="displayName" ng-model="company.displayName" />
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+            </div>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>CNPJ</label>
+                <input disabled name="cnpj" ng-model="company.cnpj" />
+            </md-input-container>
+
+        </div>
+        
+        <div layout-gt-sm="row">
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Razão Social</label>
+                <input disabled name="name" ng-model="company.name" />
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+            </div>
+        
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Email</label>
+                <input disabled name="email" ng-model="company.email" />
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm>
+            <!-- Spacer //-->
+            </div>
+
+            <div class="md-block" flex-gt-sm >
+                <md-checkbox disabled ng-model="company.emailVerifield" aria-label="Verificação de Email">
+                    Verificação de Email
+                </md-checkbox>
+            </div>
+                    
+        </div>
+    </md-content>
+
+  </div>
