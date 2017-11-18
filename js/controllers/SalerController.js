@@ -34,18 +34,12 @@ app.controller("SalerController", function($scope, $rootScope, $location, $mdToa
     });
 
     $scope.newSaler = function(ev) {
-        // Appending dialog to document.body to cover sidenav in docs app
-        var confirm = $mdDialog.prompt()
-        .title('Cadastrar um novo colaborador')
-        .placeholder('Email')
-        .ariaLabel('Email')
-        .targetEvent(ev)
-        .required(true)
-        .ok('Salvar')
-        .cancel('Cancelar');
-
-        $mdDialog.show(confirm).then(function(result) {
-            $scope.status = 'Colaborador salvo com sucesso. ' + result + '.';
+        $mdDialog.show({
+            'controller'      : 'SalerNewController',
+            'templateUrl'     : 'partials/saler/salerNew.html',
+            'parent'          : angular.element(document.body),
+            'targetEvent'     : ev,
+            'clickOutsideToClose' : true
         });
     };
 

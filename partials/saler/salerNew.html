@@ -1,0 +1,53 @@
+<md-dialog aria-label="Mango (Fruit)">
+    <form ng-cloak>
+        <md-progress-linear md-mode="indeterminate" ng-if="loaderModal"></md-progress-linear>
+        <md-toolbar >
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex">Novo Colaborador</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <md-content flex layout-padding>
+            <div layout-gt-sm="row">
+
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Nome</label>
+                    <input name="name" ng-model="saler.name" />
+                </md-input-container>
+
+                <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+                </div>
+
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>CNPJ</label>
+                    <input name="cnpj" ng-model="saler.cnpj" />
+                </md-input-container>
+
+            </div>
+            
+            <div layout-gt-sm="row">
+            
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Email</label>
+                    <input name="email" ng-model="saler.email" />
+                </md-input-container>
+
+                <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+                </div>
+
+                <div class="md-block" flex-gt-sm >
+                    <md-checkbox ng-model="saler.emailVerifield" aria-label="Verificação de Email">
+                        Verificação de Email
+                    </md-checkbox>
+                </div>
+                        
+            </div>
+
+            <div layout-gt-sm="row">
+                <md-button type="submit" flex class="md-raised md-primary md-block" ng-click="loginUser();" >Entrar</md-button>
+            </div>
+        </md-content>
+    </form>
+</md-dialog>

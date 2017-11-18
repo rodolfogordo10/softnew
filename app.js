@@ -6,7 +6,7 @@ var app = angular.module('Softnew', [
   'angularCSS'
 ])
 
-.run(function($rootScope, $state, $location) {
+.run(function($rootScope, $state, $location, $mdSidenav) {
   $rootScope.$on('$stateChangeStart', function(evt, to, params) {
     if (to.redirectTo) {
       evt.preventDefault();
@@ -35,8 +35,28 @@ var app = angular.module('Softnew', [
         window.sessionStorage.setItem('USER_SOFTNEW', firebaseUser.uid);
     });
 
+  $rootScope.menuItem = [
+    {
+      'name' : 'empresa',
+      'icon' : 'ic_store_black_24px.svg'
+    },
+    {
+      'name' : 'colaborador',
+      'icon' : 'ic_account_circle_black_24px.svg'
+    },
+    {
+      'name': 'log',
+      'icon' : 'ic_history_black_24px.svg'
+    }
+  ];
+
   $rootScope.menuAction = function(action) {
-    return $location.path('/' + action);
+    $mdSidenav('sidenavmenu').toggle();
+    return $location.path('/' + action.name);
+  };
+
+  $rootScope.menu = function() {
+    return $mdSidenav('sidenavmenu').toggle();
   };
 
 }).config(function($mdThemingProvider) {

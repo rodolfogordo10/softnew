@@ -1,4 +1,4 @@
-<div ng-cloak>
+<div ng-cloak >
 
     <md-content>
         <md-list flex>
@@ -12,12 +12,12 @@
         </md-list>
     </md-content>
 
-</div>
+    <md-fab-speed-dial md-direction="down" class="md-scale md-fab-bottom-right">
+        <md-fab-trigger>
+            <md-button aria-label="Novo Colaborador" class="md-fab" ng-click="newSaler($event)">
+                <md-icon md-svg-src="img/icons/ic_account_circle_black_24px.svg"></md-icon>
+            </md-button>
+        </md-fab-trigger>
+    </md-fab-speed-dial>
 
-<md-fab-speed-dial ng-class="md-fling">
-    <md-fab-trigger>
-        <md-button aria-label="Novo Colaborador" class="md-fab md-fab-top-right" ng-click="newSaler($event)">
-            <md-icon md-svg-src="img/icons/ic_account_circle_black_24px.svg"></md-icon>
-        </md-button>
-    </md-fab-trigger>
-</md-fab-speed-dial>
+</div>
