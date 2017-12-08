@@ -17,9 +17,12 @@
     "angular-base64": "^2.0.5",
     "angular-css": "^1.0.8",
     "angular-i18n": "^1.6.4",
+    "angular-input-masks": "^4.1.0",
     "angular-material": "^1.1.1",
+    "angular-moment": "^1.2.0",
     "angular-ui-router": "^0.4.3",
-    "angularfire": "^2.3.0"
+    "angularfire": "^2.3.0",
+    "moment": "^2.19.3"
   },
   "devDependencies": {
     "browser-sync": "^2.18.13",

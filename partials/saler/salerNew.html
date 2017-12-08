@@ -1,18 +1,25 @@
-<md-dialog aria-label="Mango (Fruit)">
-    <form ng-cloak>
-        <md-progress-linear md-mode="indeterminate" ng-if="loaderModal"></md-progress-linear>
-        <md-toolbar >
-            <div class="md-toolbar-tools">
-                <h2 class="md-flex">Novo Colaborador</h2>
-                <span flex></span>
-            </div>
-        </md-toolbar>
-        <md-content flex layout-padding>
-            <div layout-gt-sm="row">
+<md-dialog aria-label="Novo Colaborador" style="min-width: 40%;">
+    <md-progress-linear md-mode="indeterminate" ng-if="loaderModal"></md-progress-linear>
+    <md-toolbar >
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">Novo Colaborador</h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+    <md-content flex layout-padding>
+        <form ng-cloak name="salerForm" ng-submit="newSaler()" >
+
+            <div layout-gt-sm="row" >
 
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Nome</label>
-                    <input name="name" ng-model="saler.name" />
+                    <input name="nome" ng-model="saler.nome" required md-minlength="2" md-maxlength="30" />
+                    <div ng-messages="salerForm.nome.$error" role="alert">
+                        <div ng-message="required">Nome é obrigatório.</div>
+                        <div ng-message-exp="['minlength', 'maxlength']">
+                            Seu nome deve ter entre 2 a 30 caracteres
+                        </div>
+                    </div>
                 </md-input-container>
 
                 <div flex="5" hide-xs hide-sm>
@@ -20,8 +27,26 @@
                 </div>
 
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>CNPJ</label>
-                    <input name="cnpj" ng-model="saler.cnpj" />
+                    <label>Sobre Nome</label>
+                    <input name="sobrenome" ng-model="saler.sobrenome" required md-minlength="2" md-maxlength="30" />
+                    <div ng-messages="salerForm.sobrenome.$error" >
+                        <div ng-message="required">Sobre nome é obrigatório.</div>
+                        <div ng-message-exp="['minlength', 'maxlength']">
+                            Seu sobre nome deve ter entre 2 a 30 caracteres
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+                </div>
+
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>CPF</label>
+                    <input name="cpf" ng-model="saler.cpf" required ui-br-cpf-mask />
+                    <div ng-messages="salerForm.cpf.$error" >
+                        <div ng-message="required">CPF é obrigatório.</div>
+                    </div>
                 </md-input-container>
 
             </div>
@@ -29,25 +54,38 @@
             <div layout-gt-sm="row">
             
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Email</label>
-                    <input name="email" ng-model="saler.email" />
+                    <label>Login</label>
+                    <input name="username" ng-model="saler.username" required md-minlength="5" md-maxlength="20"/>
+                    <div ng-messages="salerForm.username.$error" >
+                        <div ng-message="required">Login é obrigatório.</div>
+                        <div ng-message-exp="['minlength', 'maxlength']">
+                            Seu login deve ter entre 5 a 20 caracteres.
+                        </div>
+                    </div>
                 </md-input-container>
 
                 <div flex="5" hide-xs hide-sm>
                 <!-- Spacer //-->
                 </div>
 
-                <div class="md-block" flex-gt-sm >
-                    <md-checkbox ng-model="saler.emailVerifield" aria-label="Verificação de Email">
-                        Verificação de Email
-                    </md-checkbox>
-                </div>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Senha</label>
+                    <input type="password" name="password" ng-model="saler.password" required md-minlength="5" md-maxlength="15"/>
+                    <div ng-messages="salerForm.password.$error" >
+                        <div ng-message="required">senha é obrigatória.</div>
+                        <div ng-message-exp="['minlength', 'maxlength']">
+                            Sua senha deve ter entre 5 a 15 caracteres.
+                        </div>
+                    </div>
+                </md-input-container>
                         
             </div>
 
             <div layout-gt-sm="row">
-                <md-button type="submit" flex class="md-raised md-primary md-block" ng-click="loginUser();" >Entrar</md-button>
+                <md-button type="submit" flex class="md-raised md-primary md-block" ng-disabled="salerForm.$invalid" >Salvar</md-button>
             </div>
-        </md-content>
-    </form>
+        </form>
+
+    </md-content>
+    
 </md-dialog>

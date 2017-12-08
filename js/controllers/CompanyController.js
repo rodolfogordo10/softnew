@@ -19,9 +19,9 @@ app.controller("CompanyController", function($scope, $rootScope, $location, $mdT
         // To iterate the key/value pairs of the object, use angular.forEach()
         angular.forEach(obj, function(value, key) {
             if (key === 'softnew')
-                if (value['companies'])
-                    if (value['companies'][token]['company-info']) {
-                        $scope.company              = value['companies'][token]['company-info'];
+                if (value['empresas'])
+                    if (value['empresas'][token]['empresa-info']) {
+                        $scope.company              = value['empresas'][token]['empresa-info'];
                         $rootScope.loaderPaginate   = false;
                     }
         });

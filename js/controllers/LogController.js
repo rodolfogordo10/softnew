@@ -14,30 +14,43 @@ app.controller("LogController", function($scope, $rootScope, $location, $mdToast
     // to take an action after the data loads, use the $loaded() promise
     obj.$loaded().then(function() {
 
-        $scope.logs = [];
+        $scope.logs     = [];
+        $scope.salers   = [];
 
         // To iterate the key/value pairs of the object, use angular.forEach()
         angular.forEach(obj, function(value, key) {
-            if (key === 'Logs') {
-                Object.keys(value).map(function (key) {
-                    if (value[key][token]) {
-                        Object.keys(value[key][token]).map(function (key2) {
-                            if (value[key][token][key2]) {
-                                Object.keys(value[key][token][key2]).map(function (key3) {
-                                    if (value[key][token][key2][key3]) {
-                                        $scope.logs.push(value[key][token][key2][key3]);
-                                    }
-                                });
-                            }
+            if (key === 'softnew')
+                if (value['empresas']) {
+                    if (value['empresas'][token]['Logs']) {
+                        Object.keys(value['empresas'][token]['Logs']).map(function (key) {
+                            value['empresas'][token]['Logs'][key].dataHora = moment(value['empresas'][token]['Logs'][key].dataHora).format('DD/MM/YYYY HH:MM:SS');
+                            $scope.logs.push(value['empresas'][token]['Logs'][key]);
                         });
                     }
-                });
-                $rootScope.loaderPaginate   = false;
-            }
+                    if (value['empresas'][token]['colaboradores']) {
+                        Object.keys(value['empresas'][token]['colaboradores']).map(function (key) {
+                            $scope.salers.push(value['empresas'][token]['colaboradores'][key]['colaborador-info']);
+                        });
+                    }
+                    $rootScope.loaderPaginate   = false;
+                }
         });
 
     }).catch(function() {
-        $mdToast.show($mdToast.simple().textContent('Error em buscar empresa.'));
+        $mdToast.show($mdToast.simple().textContent('Error em buscar logs.'));
     });
+
+    $scope.salerLog = function(salerId) {
+        for (var i = 0; i < $scope.salers.length; i++) {
+            if ($scope.salers[i].uid === salerId) {
+                return $scope.salers[i].displayName;
+            }
+        }
+    };
+
+    $scope.getDate = function() {
+        console.log($scope.search, $scope.dataHora);
+        $scope.search.dataHora = moment($scope.dataHora).format(DD/MM/YYYY);
+    };
 
 });

@@ -3,7 +3,9 @@ var app = angular.module('Softnew', [
   'ngAnimate',
   'firebase',
   'ui.router',
-  'angularCSS'
+  'angularCSS',
+  'ui.utils.masks',
+  'angularMoment'
 ])
 
 .run(function($rootScope, $state, $location, $mdSidenav) {

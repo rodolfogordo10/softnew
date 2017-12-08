@@ -5,12 +5,12 @@
                 <div class="container-logo">
                     <img src="img/logo.png" class="img-logo" style="width: 100%;"></img>
                 </div>
-                <form name="userForm" >
+                <form name="userForm" ng-submit="loginUser()" >
                     <div flex="100" >
                         <md-input-container class="md-block">
                             <label>Login</label>
                             <input ng-model="user.email" type="email" required name="email" >
-                            <div ng-messages="user.email.$error" >
+                            <div ng-messages="userForm.email.$error" >
                                 <div ng-message="required">Login inválido.</div>
                             </div>
                         </md-input-container>
@@ -19,13 +19,13 @@
                         <md-input-container class="md-block">
                             <label>Senha</label>
                             <input ng-model="user.password" type="password" required name="password" >
-                            <div ng-messages="user.password.$error" >
+                            <div ng-messages="userForm.password.$error" >
                                 <div ng-message="required">Senha inválido.</div>
                             </div>
                         </md-input-container>
                     </div>
                     <div flex="100" layout="row" layout-align="center center">
-                        <md-button type="submit" flex class="md-raised md-primary md-block" ng-click="loginUser();" >Entrar</md-button>
+                        <md-button type="submit" flex class="md-raised md-primary md-block" ng-disabled="userForm.$invalid" >Entrar</md-button>
                     </div>
                 </form>
             </div>

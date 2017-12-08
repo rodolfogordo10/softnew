@@ -1,10 +1,32 @@
 <div ng-cloak>
-    
+    <md-content class="md-padding" ng-cloak>
+        <div flex>
+            <h1 class="md-title">Filtros</h1>
+            <div layout="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Colaborador</label>
+                    <md-select ng-model="search.idColaborador" >
+                        <md-option ng-value="item.uid" ng-repeat="item in salers">{{item.displayName}}</md-option>
+                    </md-select>
+                </md-input-container>
+
+                <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+                </div>
+
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Data</label>
+                    <input type="text" name="dataHora" ng-model="search.dataHora" parse="false" ui-date-mask />
+                </md-input-container>
+            </div>
+        </div>
+    </md-content>
     <md-content>
         <md-list flex>
-            <md-list-item class="md-3-line" ng-repeat="item in logs" ng-click="null">
+            <md-list-item class="md-3-line" ng-repeat="item in logs | filter:search" ng-click="null">
                 <div class="md-list-item-text" layout="column">
                     <h3>{{ item.dataHora }}</h3>
+                    <h4>{{ salerLog(item.idColaborador) }}</h4>
                     <h4>{{ item.mensagem }}</h4>
                     <p>{{ item.numero }}</p>
                 </div>
