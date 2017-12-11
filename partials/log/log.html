@@ -19,19 +19,21 @@
                     <input type="text" name="dataHora" ng-model="search.dataHora" parse="false" ui-date-mask />
                 </md-input-container>
             </div>
+            <div >Total de Registro: {{items.length}}</div>
         </div>
     </md-content>
     <md-content>
         <md-list flex>
-            <md-list-item class="md-3-line" ng-repeat="item in logs | filter:search" ng-click="null">
+            <md-list-item class="md-3-line" ng-repeat="item in items = (logs | filter:search)" ng-click="null">
                 <div class="md-list-item-text" layout="column">
-                    <h3>{{ item.dataHora }}</h3>
-                    <h4>{{ salerLog(item.idColaborador) }}</h4>
-                    <h4>{{ item.mensagem }}</h4>
-                    <p>{{ item.numero }}</p>
+                    <h4><b>Data e hora: </b>{{ item.dataHora }}</h4>
+                    <h4><b>Colaborador: </b>{{ salerLog(item.idColaborador) }}</h4>
+                    <h4><b>Mensagem: </b>{{ item.mensagem }}</h4>
+                    <h4><b>Telefone: </b>{{ item.numero }}</h4>
                 </div>
             </md-list-item>
         </md-list>
+        
     </md-content>
 
 </div>

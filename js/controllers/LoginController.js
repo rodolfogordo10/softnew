@@ -12,7 +12,7 @@ app.controller("LoginController", function($scope, $css, $mdToast, $location) {
 
 			window.sessionStorage.setItem('USER_SOFTNEW', firebaseUser.uid);
 
-			$location.path('/empresa');
+			$location.path('/colaborador');
 
 		}).catch(function(error) {
 			var errMsg;

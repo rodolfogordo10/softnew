@@ -5,7 +5,7 @@ var app = angular.module('Softnew', [
   'ui.router',
   'angularCSS',
   'ui.utils.masks',
-  'angularMoment'
+  'angularMoment',
 ])
 
 .run(function($rootScope, $state, $location, $mdSidenav) {

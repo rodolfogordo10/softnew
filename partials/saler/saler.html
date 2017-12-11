@@ -2,22 +2,22 @@
 
     <md-content>
         <md-list flex>
-            <md-list-item class="md-3-line" ng-repeat="item in salers" ng-click="null">
+            <md-list-item class="md-3-line" ng-repeat="item in salers" >
                 <div class="md-list-item-text" layout="column">
-                    <h3>{{ item.displayName }}</h3>
-                    <h4>{{ item.email }}</h4>
-                    <p>{{ item.cpf }}</p>
+                    <h4><b>Nome: </b>{{ item.displayName }}</h4>
+                    <h4><b>Email: </b>{{ item.email }}</h4>
+                    <h4><b>CPF: </b>{{ item.cpf }}</h4>
                 </div>
             </md-list-item>
         </md-list>
     </md-content>
 
-    <md-fab-speed-dial md-direction="down" class="md-scale md-fab-bottom-right">
-        <md-fab-trigger>
-            <md-button aria-label="Novo Colaborador" class="md-fab" ng-click="newSaler($event)">
-                <md-icon md-svg-src="img/icons/ic_account_circle_black_24px.svg"></md-icon>
-            </md-button>
-        </md-fab-trigger>
-    </md-fab-speed-dial>
-
 </div>
+
+<md-fab-speed-dial ng-cloak class="md-scale md-fab-bottom-right" style="position:fixed">
+    <md-fab-trigger>
+        <md-button aria-label="Novo Colaborador" class="md-fab" ng-click="newSaler($event)">
+            <md-icon md-svg-src="img/icons/ic_account_circle_black_24px.svg"></md-icon>
+        </md-button>
+    </md-fab-trigger>
+</md-fab-speed-dial>

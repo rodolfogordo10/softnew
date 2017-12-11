@@ -5,7 +5,31 @@ app.controller("SalerController", function($scope, $rootScope, $location, $mdToa
     if (!token)
         return $location.path('/login');
 
-    function salerNewController($scope, $mdDialog) {
+    function salerNewController($scope, $mdDialog, item) {
+
+        if (item) {
+            $scope.editSaler    = true;
+            $scope.labelTitle   = 'Remover Login do Colaborador';
+            $scope.saler        = item;
+        }
+
+        if (!item)
+            $scope.labelTitle   = 'Novo Colaborador';
+
+        // $scope.editSaler = function() {
+        //     console.log(firebase.auth());
+
+        //     firebase.auth().updateEmail($scope.saler.uid).then(function(firebaseUser) {
+    
+        //         $mdToast.show($mdToast.simple().textContent($scope.saler.displayNome + ', colaborador excluído.'));
+    
+        //     }).catch(function(error) {
+        //         var errMsg = 'Erro ao excluir o colaborador';
+                    
+        //         $mdToast.show($mdToast.simple().textContent(errMsg));
+        //     });
+        // };
+
         $scope.newSaler = function() {
             
             $scope.loaderModal   = true;
@@ -66,12 +90,15 @@ app.controller("SalerController", function($scope, $rootScope, $location, $mdToa
         });
     };
 
-    $scope.newSaler = function(ev) {
+    $scope.newSaler = function(ev, item) {
         $mdDialog.show({
             'controller'      : salerNewController,
             'templateUrl'     : 'partials/saler/salerNew.html',
             'parent'          : angular.element(document.body),
             'targetEvent'     : ev,
+            'locals'          : {
+                'item'        : item
+            },
             'clickOutsideToClose' : true
         }).finally(function() {
             $scope.listSaler();

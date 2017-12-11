@@ -25,7 +25,7 @@ app.config( function($stateProvider, $urlRouterProvider, $locationProvider) {
       var routeDefault = '/login';
 
       if (token)
-        routeDefault = '/empresa';
+        routeDefault = '/colaborador';
 
       $urlRouterProvider.when('', routeDefault);
 
