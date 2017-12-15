@@ -5,30 +5,9 @@ app.controller("SalerController", function($scope, $rootScope, $location, $mdToa
     if (!token)
         return $location.path('/login');
 
-    function salerNewController($scope, $mdDialog, item) {
+    function salerNewController($scope, $mdDialog) {
 
-        if (item) {
-            $scope.editSaler    = true;
-            $scope.labelTitle   = 'Remover Login do Colaborador';
-            $scope.saler        = item;
-        }
-
-        if (!item)
-            $scope.labelTitle   = 'Novo Colaborador';
-
-        // $scope.editSaler = function() {
-        //     console.log(firebase.auth());
-
-        //     firebase.auth().updateEmail($scope.saler.uid).then(function(firebaseUser) {
-    
-        //         $mdToast.show($mdToast.simple().textContent($scope.saler.displayNome + ', colaborador excluído.'));
-    
-        //     }).catch(function(error) {
-        //         var errMsg = 'Erro ao excluir o colaborador';
-                    
-        //         $mdToast.show($mdToast.simple().textContent(errMsg));
-        //     });
-        // };
+        $scope.labelTitle   = 'Novo Colaborador';
 
         $scope.newSaler = function() {
             
@@ -64,6 +43,25 @@ app.controller("SalerController", function($scope, $rootScope, $location, $mdToa
 
     var ref 	= firebase.database().ref();
     var obj 	= $firebaseObject(ref);
+
+    $scope.editSaler = function(item) {
+
+        // Salva o colaborador no API
+        ApiService.delete('colaborador/' + token, item.uid, function(err, sucess) {
+            $scope.loaderModal   = false;
+
+            if (err) {
+                $mdToast.show($mdToast.simple().textContent('Error em excluir um colaborador.'));
+            }
+
+            if (sucess) {
+                $mdToast.show($mdToast.simple().textContent('colaborador ' + item.nome + ' excluído.'));
+                $scope.listSaler();
+            }
+
+        });
+        
+    };
     
     // to take an action after the data loads, use the $loaded() promise
     $scope.listSaler = function() {
@@ -90,15 +88,12 @@ app.controller("SalerController", function($scope, $rootScope, $location, $mdToa
         });
     };
 
-    $scope.newSaler = function(ev, item) {
+    $scope.newSaler = function(ev) {
         $mdDialog.show({
             'controller'      : salerNewController,
             'templateUrl'     : 'partials/saler/salerNew.html',
             'parent'          : angular.element(document.body),
             'targetEvent'     : ev,
-            'locals'          : {
-                'item'        : item
-            },
             'clickOutsideToClose' : true
         }).finally(function() {
             $scope.listSaler();

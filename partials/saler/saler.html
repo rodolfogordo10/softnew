@@ -2,11 +2,13 @@
 
     <md-content>
         <md-list flex>
-            <md-list-item class="md-3-line" ng-repeat="item in salers" >
+            <md-list-item class="md-3-line" ng-repeat="item in salers" ng-click="null">
+                <md-button class="md-icon-button" aria-label="Excluir" ng-click="editSaler(item)">
+                    <img ng-src="/img/icons/ic_delete_forever_black_24px.svg" alt="Excluir" />
+                </md-button>
                 <div class="md-list-item-text" layout="column">
                     <h4><b>Nome: </b>{{ item.displayName }}</h4>
                     <h4><b>Email: </b>{{ item.email }}</h4>
-                    <h4><b>CPF: </b>{{ item.cpf }}</h4>
                 </div>
             </md-list-item>
         </md-list>

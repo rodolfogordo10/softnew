@@ -9,7 +9,7 @@
     <md-content flex layout-padding>
         <form ng-cloak name="salerForm" ng-submit="newSaler()" >
 
-            <div layout-gt-sm="row" ng-if="!editSaler" >
+            <div layout-gt-sm="row"  >
 
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Nome</label>
@@ -37,21 +37,9 @@
                     </div>
                 </md-input-container>
 
-                <div flex="5" hide-xs hide-sm>
-                <!-- Spacer //-->
-                </div>
-
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>CPF</label>
-                    <input name="cpf" ng-model="saler.cpf" required ui-br-cpf-mask />
-                    <div ng-messages="salerForm.cpf.$error" >
-                        <div ng-message="required">CPF é obrigatório.</div>
-                    </div>
-                </md-input-container>
-
             </div>
             
-            <div layout-gt-sm="row" ng-if="!editSaler">
+            <div layout-gt-sm="row" >
             
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Login</label>
@@ -81,20 +69,7 @@
                         
             </div>
 
-            <div layout-gt-sm="row" ng-if="editSaler">
-            
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Colaborador</label>
-                    <input disabled name="username" ng-model="saler.displayName" />
-                </md-input-container>
-                        
-            </div>
-
-            <div layout-gt-sm="row" ng-if="editSaler">
-                <md-button class="md-raised md-primary" ng-click="editSaler()" >Excluir</md-button>
-            </div>
-
-            <div layout-gt-sm="row" ng-if="!editSaler">
+            <div layout-gt-sm="row" >
                 <md-button type="submit" class="md-raised md-primary md-block" ng-disabled="salerForm.$invalid" >Salvar</md-button>
             </div>
         </form>
