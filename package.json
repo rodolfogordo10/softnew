@@ -1,31 +1,51 @@
 {
   "name": "softnew",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Show up Vila Mota applications system",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "npm install -g gulp-cli gulp",
-    "start": "gulp serve"
+    "dev": "node_modules/.bin/rimraf node_modules/.cache && IS_DEVELOPMENT=true node --inspect server.js",
+    "build": "node_modules/next/dist/bin/next build",
+    "start": "pm2 start ecosystem.config.js",
+    "lint": "node_modules/.bin/eslint ./ --ignore-pattern .gitignore",
+    "test": "npm run lint"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "angular": "^1.5.9",
-    "angular-animate": "^1.5.9",
-    "angular-aria": "^1.5.9",
-    "angular-base64": "^2.0.5",
-    "angular-css": "^1.0.8",
-    "angular-i18n": "^1.6.4",
-    "angular-input-masks": "^4.1.0",
-    "angular-material": "^1.1.1",
-    "angular-moment": "^1.2.0",
-    "angular-ui-router": "^0.4.3",
-    "angularfire": "^2.3.0",
-    "moment": "^2.19.3"
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodolfogordo10/softnew.git"
   },
+  "bugs": {
+    "url": "https://github.com/rodolfogordo10/softnew/issues"
+  },
+  "homepage": "https://github.com/rodolfogordo10/softnew#readme",
   "devDependencies": {
-    "browser-sync": "^2.18.13",
-    "gulp": "^3.9.1"
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.9.1",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "autosize": "^4.0.2",
+    "babel-plugin-transform-define": "^1.3.0",
+    "compression": "^1.7.3",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "isomorphic-unfetch": "^2.0.0",
+    "js-cookie": "^2.2.0",
+    "next": "^6.0.3",
+    "next-offline": "^2.7.2",
+    "nprogress": "^0.2.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.1",
+    "react-avatar-editor": "^11.0.4",
+    "react-dom": "^16.4.1",
+    "react-input-mask": "^2.0.4",
+    "react-text-mask": "^5.4.3",
+    "string-to-hex-color": "^1.0.0"
   }
 }
