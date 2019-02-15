@@ -1,6 +1,6 @@
-# Sistema
+# Softnew
 
-[Sistema](https://vilamotasoft.com.br)
+[Softnew](https://vilamotasoft.com.br)
 
 * [Submit bugs and feature requests](https://github.com/rodolfogordo10/softnew/issue) and help us verify as they are checked in
 * Review [source code changes](https://github.com/rodolfogordo10/softnew/pulls)
