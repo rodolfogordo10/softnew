@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node_modules/.bin/rimraf node_modules/.cache && IS_DEVELOPMENT=true node --inspect server.js",
     "build": "node_modules/next/dist/bin/next build",
-    "start": "pm2 start ecosystem.config.js",
+    "start": "node_modules/.bin/rimraf node_modules/.cache && IS_DEVELOPMENT=true node --inspect server.js",
     "lint": "node_modules/.bin/eslint ./ --ignore-pattern .gitignore",
     "test": "npm run lint"
   },
