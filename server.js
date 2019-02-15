@@ -11,7 +11,6 @@ const cookieParser = require('cookie-parser');
 const next = require('next');
 
 const indexRouter = require('./routes/index');
-const contactsRouter = require('./routes/contacts');
 
 const app = next({ dev: isDevelopment });
 const handle = app.getRequestHandler();
@@ -27,10 +26,8 @@ app.prepare()
     server.use(cookieParser());
 
     const indexRouters = indexRouter.getRouter(app);
-    const contactsRouters = contactsRouter.getRouter(app);
 
     server.use(indexRouters);
-    server.use(contactsRouters);
 
     server.get('*', (req, res) => {
       const parsedUrl = parse(req.url, true);

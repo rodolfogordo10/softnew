@@ -23,10 +23,6 @@ export default class extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="description" content="Sistema" />
 
-          <link rel="shortcut icon" href="/static/icons/system.png" />
-          <link rel="icon" href="/static/icons/system.png" />
-          <link rel="apple-touch-icon" href="/static/icons/system.png" />
-
           <style>{`
             * {
               box-sizing: border-box;
